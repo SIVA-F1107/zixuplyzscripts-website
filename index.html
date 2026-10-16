@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#e11d48">
+  <meta name="description" content="ZixuPlyz — free MLBB community resources, guides, and updates.">
+  <title>ZixuPlyz | MLBB Resources</title>
+  <style>
+    :root { --red:#e11d48; --deep:#9f1239; --ink:#24151a; --muted:#77666b; --glass:rgba(255,255,255,.72); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0; color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(251,113,133,.30), transparent 28rem),
+        radial-gradient(circle at 100% 25%, rgba(225,29,72,.16), transparent 24rem),
+        linear-gradient(145deg,#fff 0%,#fff5f6 48%,#ffe4e9 100%);
+      min-height:100vh;
+    }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1080px, calc(100% - 30px)); margin:auto; }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding:20px 0; gap:12px; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:-.04em; font-size:1.25rem; }
+    .logo { display:grid; place-items:center; width:40px; height:40px; border-radius:14px; color:#fff; background:linear-gradient(145deg,#fb7185,#be123c); box-shadow:0 8px 22px #e11d4838; }
+    .navlink { font-size:.9rem; font-weight:750; color:#7f1d36; }
+    .glass { background:var(--glass); border:1px solid rgba(255,255,255,.9); box-shadow:0 18px 55px rgba(159,18,57,.09), inset 0 1px 0 #fff; backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
+    .hero { padding:34px 0 26px; display:grid; grid-template-columns:1.2fr .8fr; gap:22px; align-items:stretch; }
+    .hero-main { padding:clamp(24px,5vw,48px); border-radius:30px; overflow:hidden; position:relative; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; color:var(--deep); background:#ffe4e9; border:1px solid #fecdd3; border-radius:999px; padding:8px 12px; font-size:.76rem; font-weight:850; text-transform:uppercase; letter-spacing:.08em; }
+    h1 { font-size:clamp(2.5rem,7vw,5rem); line-height:.96; letter-spacing:-.07em; margin:22px 0 14px; }
+    h1 span { color:var(--red); }
+    .lead { max-width:570px; color:var(--muted); line-height:1.7; font-size:1rem; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+    .btn { display:inline-flex; justify-content:center; align-items:center; gap:9px; border:0; border-radius:14px; padding:13px 17px; font-weight:850; font-size:.92rem; cursor:pointer; transition:transform .18s,box-shadow .18s; }
+    .btn:hover { transform:translateY(-2px); }
+    .primary { color:white; background:linear-gradient(135deg,#fb7185,#be123c); box-shadow:0 10px 25px #e11d4838; }
+    .secondary { color:#9f1239; background:#fff; border:1px solid #fecdd3; }
+    .hero-side { border-radius:30px; padding:22px; display:flex; flex-direction:column; justify-content:space-between; min-height:270px; background:linear-gradient(145deg,rgba(255,255,255,.86),rgba(255,228,233,.72)); }
+    .orb { width:100%; min-height:155px; border-radius:22px; display:grid; place-items:center; background:radial-gradient(circle at 50% 40%,#fff 0%,#ffe4e9 40%,#fda4af 100%); border:1px solid white; }
+    .orb-icon { font-size:4.5rem; filter:drop-shadow(0 10px 10px #be123c2b); }
+    .side-title { margin:17px 0 4px; font-size:1.15rem; font-weight:900; }
+    .side-copy { color:var(--muted); font-size:.9rem; line-height:1.5; margin:0; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:15px; margin:28px 0 16px; }
+    h2 { font-size:clamp(1.5rem,4vw,2rem); margin:0; letter-spacing:-.045em; }
+    .section-sub { color:var(--muted); margin:6px 0 0; font-size:.92rem; }
+    .search { width:min(100%,280px); padding:13px 15px; border-radius:14px; border:1px solid #fbc2cd; background:#ffffffbd; outline:none; font:inherit; }
+    .search:focus { border-color:var(--red); box-shadow:0 0 0 3px #e11d481a; }
+    .filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+    .chip { border:1px solid #fecdd3; color:#9f1239; background:#ffffffa8; padding:9px 13px; border-radius:999px; font-weight:800; cursor:pointer; }
+    .chip.active { background:var(--red); color:#fff; border-color:var(--red); }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:15px; }
+    .card { border-radius:22px; padding:18px; min-height:218px; display:flex; flex-direction:column; }
+    .card-top { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+    .card-icon { width:44px; height:44px; border-radius:15px; display:grid; place-items:center; background:#ffe4e9; font-size:1.35rem; }
+    .tag { font-size:.72rem; font-weight:850; padding:6px 9px; border-radius:999px; color:#9f1239; background:#fff0f3; }
+    .card h3 { margin:16px 0 7px; font-size:1.06rem; letter-spacing:-.025em; }
+    .card p { color:var(--muted); font-size:.88rem; line-height:1.55; margin:0 0 16px; }
+    .card .btn { width:100%; margin-top:auto; padding:11px 13px; }
+    .empty { display:none; padding:26px; text-align:center; border-radius:18px; color:var(--muted); }
+    .notice { margin:24px 0 0; padding:17px 19px; border-radius:18px; color:#783044; font-size:.84rem; line-height:1.6; }
+    .notice strong { color:#9f1239; }
+    footer { padding:28px 0 36px; color:var(--muted); font-size:.84rem; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .foot-brand { color:#9f1239; font-weight:900; }
+    @media (max-width:760px) {
+      .hero { grid-template-columns:1fr; padding-top:16px; }
+      .hero-side { min-height:unset; }
+      .orb { min-height:120px; }
+      .grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .section-head { align-items:stretch; flex-direction:column; }
+      .search { width:100%; }
+    }
+    @media (max-width:460px) {
+      .wrap { width:min(100% - 22px,1080px); }
+      .nav { padding:15px 0; }
+      .navlink { font-size:.8rem; }
+      .grid { grid-template-columns:1fr; }
+      .hero-main { padding:25px 21px; border-radius:24px; }
+      .hero-side { border-radius:24px; }
+      h1 { font-size:3.1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap nav">
+    <a class="brand" href="#" aria-label="ZixuPlyz home"><span class="logo">Z</span><span>Zixu<span style="color:#e11d48">Plyz</span></span></a>
+    <a class="navlink" href="#resources">FREE RESOURCES ↓</a>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-main glass">
+        <span class="eyebrow">♥ Community resource hub</span>
+        <h1>LEVEL UP<br>WITH <span>ZIXUPLYZ.</span></h1>
+        <p class="lead">Find MLBB community resources, tutorials, setup guides, and creator updates — all in one place. Free to browse on your phone.</p>
+        <div class="actions">
+          <!-- Replace the # in the YouTube link with your channel URL -->
+          <a class="btn primary" href="https://www.youtube.com/" target="_blank" rel="noopener">▶ Watch on YouTube</a>
+          <a class="btn secondary" href="#resources">Explore resources ↓</a>
+        </div>
+      </div>
+      <aside class="hero-side glass">
+        <div class="orb"><div class="orb-icon">🎮</div></div>
+        <div>
+          <div class="side-title">Made for the community</div>
+          <p class="side-copy">Free resources • Mobile-friendly • Red & white glass design</p>
+        </div>
+      </aside>
+    </section>
+
+    <section id="resources">
+      <div class="section-head">
+        <div>
+          <h2>Resource library</h2>
+          <p class="section-sub">Search the latest guides and community resources.</p>
+        </div>
+        <input id="search" class="search" type="search" placeholder="Search resources…" aria-label="Search resources">
+      </div>
+      <div class="filters" aria-label="Resource filters">
+        <button class="chip active" data-filter="All">All</button>
+        <button class="chip" data-filter="Guides">Guides</button>
+        <button class="chip" data-filter="Resources">Resources</button>
+        <button class="chip" data-filter="Updates">Updates</button>
+      </div>
+
+      <div class="grid" id="grid">
+        <article class="card glass" data-category="Guides" data-search="mlbb skin guide visual settings tutorial">
+          <div class="card-top"><div class="card-icon">✨</div><span class="tag">GUIDE</span></div>
+          <h3>MLBB Skin Guide</h3>
+          <p>A guide to official in-game skin options and visual settings.</p>
+          <a class="btn secondary resource-link" href="https://www.mobilelegends.com/" target="_blank" rel="noopener">View guide ↗</a>
+        </article>
+        <article class="card glass" data-category="Resources" data-search="community resource pack add your download link">
+          <div class="card-top"><div class="card-icon">📦</div><span class="tag">RESOURCE</span></div>
+          <h3>Community Resource Pack</h3>
+          <p>Add your own resource description and paste your file link here.</p>
+          <a class="btn primary resource-link" href="#" data-placeholder="true">Add download link</a>
+        </article>
+        <article class="card glass" data-category="Updates" data-search="latest youtube upload news updates">
+          <div class="card-top"><div class="card-icon">🔔</div><span class="tag">UPDATE</span></div>
+          <h3>Latest YouTube Upload</h3>
+          <p>Link your newest video so visitors can watch the tutorial.</p>
+          <a class="btn secondary resource-link" href="https://www.youtube.com/" target="_blank" rel="noopener">Watch video ↗</a>
+        </article>
+      </div>
+      <div id="empty" class="empty glass">No resources match your search. Try another keyword.</div>
+
+      <div class="notice glass">
+        <strong>Community note:</strong> This is an independent fan resource page and is not affiliated with or endorsed by MOONTON or Mobile Legends: Bang Bang. Only add files you have the right to share. Modified game files or skin scripts may violate the game's rules, cause security risks, or lead to account penalties. Never ask visitors to disable security protections.
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <span class="foot-brand">ZixuPlyz © <span id="year"></span></span>
+    <span>Free community resources • Play responsibly</span>
+  </footer>
+
+  <script>
+    const search = document.getElementById('search');
+    const cards = [...document.querySelectorAll('.card')];
+    const chips = [...document.querySelectorAll('.chip')];
+    const empty = document.getElementById('empty');
+    let filter = 'All';
+    function updateCards() {
+      const term = search.value.toLowerCase().trim();
+      let shown = 0;
+      cards.forEach(card => {
+        const matchesText = (card.dataset.search + ' ' + card.innerText).toLowerCase().includes(term);
+        const matchesFilter = filter === 'All' || card.dataset.category === filter;
+        card.style.display = matchesText && matchesFilter ? 'flex' : 'none';
+        if (matchesText && matchesFilter) shown++;
+      });
+      empty.style.display = shown ? 'none' : 'block';
+    }
+    search.addEventListener('input', updateCards);
+    chips.forEach(chip => chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      filter = chip.dataset.filter;
+      updateCards();
+    }));
+    document.querySelectorAll('[data-placeholder="true"]').forEach(link => link.addEventListener('click', event => {
+      event.preventDefault();
+      alert('To add a download, edit index.html and replace this button link (href="#") with your own file URL.');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
